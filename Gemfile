@@ -1,4 +1,5 @@
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in dbd_archive.gemspec
-gemspec
+gem 'require_all'
+gem 'nokogiri'
+gem 'pry'
