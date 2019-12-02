@@ -2,7 +2,7 @@
 class DBDArchive::CLI 
 
   def call 
-    puts "Hello World!"
+    puts "Welcome to the Dead by Daylight Archive!"
   end
 
 end

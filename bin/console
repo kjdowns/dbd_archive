@@ -12,3 +12,8 @@ require_relative '../config/environment'
 
 require "irb"
 IRB.start(__FILE__)
+
+attr_stub = {:name => "Vigo", :gender => "male"}
+surv_stub = {:name => "Dwight Fairfield", :gender => "male", :nationality => "American", :lore => "Dwight lore stub"}
+kill_stub = {:name => "Evan MacMillan", :gender => "male", :nationality => "American", :lore => "Trapper lore stub", :kill_name => "The Trapper", :alias => "Chuckles", :weapon => "The Cleaver", 
+            :speed => "4.6 m/s", :terror_radius => "32 m"}
