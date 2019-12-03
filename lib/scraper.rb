@@ -22,8 +22,22 @@ class DBDArchive::Scraper
   end
   
   def add_surv_attr
-    self.doc = Nokogiri::HTML(open(DBDArchive::Survivor.all[0].link))
-    binding.pry
+    DBDArchive::Survivor.all.each do |survivor|
+      self.doc = survivor.link
+      survivor.gender = self.doc.css(".infoboxtable td")[1].text.strip
+      survivor.role = self.doc.css(".infoboxtable td")[3].text
+      survivor.nationality = self.doc.css(".infoboxtable td")[5].text
+      lore_section = self.doc.css("div.floatleft ~ p")
+      lore_section.each do |section|
+        section.text.strip.include?("These are Perks") ? return : survivor.lore << section.text.strip
+      end
+      
+      #exception for feng - attr stucture is different
+      if survivor.name == "Feng Min"
+      
+      end
+      binding.pry
+    end
   end
   
 end
