@@ -5,8 +5,8 @@ class DBDArchive::CLI
 
   def call 
     greeting
-    menu_handler
-    self.input = gets.strip.downcase
+    main_menu
+    menu_handler until self.input == "exit"
   end
   
   def greeting
@@ -21,18 +21,11 @@ class DBDArchive::CLI
   def menu_handler
     case self.menu 
       when "main_menu"
-        case self.input
-          when "1"
-            character_menu
-          when "2"
-            realm_menu
-        end
+        main_menu_input
       when "character_menu"
         
       when "help"
-        help_menu
-      else
-        main_menu
+        
     end
   end
   
@@ -46,7 +39,27 @@ class DBDArchive::CLI
     puts "6. Shrine of Secrets"
     puts "7. Trivia"
     puts ""
-    self.menu = "main_menu"
+    set_menu("main_menu")
+    get_input
+  end
+  
+  def main_menu_input
+    case self.input
+      when "1"
+        character_menu
+      when "2"
+        realm_menu
+      when "3"
+        item_menu
+      when "4"
+        addon_menu
+      when "5"
+        offering_menu
+      when "6"
+        shrine_menu
+      when "7"
+        trivia_menu
+    end
   end
   
   def character_menu
@@ -54,11 +67,20 @@ class DBDArchive::CLI
     puts "1. Killers"
     puts "2. Survivors"
     puts "3. Lore Characters"
-    self.menu = "character_menu"
+    set_menu("character_menu")
+    get_input
   end
   
   def help_menu
     #list of commands
+  end
+  
+  def set_menu(menu_value)
+    self.menu = menu_value
+  end
+  
+  def get_input
+    self.input = gets.strip.downcase
   end
   
   def select_prompt
