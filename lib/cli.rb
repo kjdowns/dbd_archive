@@ -23,7 +23,7 @@ class DBDArchive::CLI
       when "main_menu"
         main_menu_input
       when "character_menu"
-        
+        character_menu_input
       when "help"
         
     end
@@ -71,8 +71,37 @@ class DBDArchive::CLI
     get_input
   end
   
+  def character_menu_input
+    case self.input
+      when "1"
+        killers_menu
+      when "2"
+        survivors_menu
+      when "3"
+        lore_char_menu
+    end
+  end
+  
+  def killers_menu
+    #for each item in killer.all print killer names
+  end
+  
+  def survivors_menu
+    #for each item in survivor.all print surv names
+  end
+  
+  def lore_char_menu
+    #for each item in character.all !surv !killer print char names
+  end
+  
   def help_menu
     #list of commands
+    #Input the number of a list item and press enter to learn more about that item 
+    #or see more selections from that item 
+    #menu - main menu
+    #killer - enter killer menu 
+    #survivor - enter surv menu 
+    #exit - exit program
   end
   
   def set_menu(menu_value)
