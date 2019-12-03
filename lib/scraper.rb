@@ -21,7 +21,7 @@ class DBDArchive::Scraper
     DBDArchive::Killer.all
   end
   
-  def add_surv_attr
+  def add_survivor_attr
     DBDArchive::Survivor.all.each do |survivor|
       self.doc = Nokogiri::HTML(open(survivor.link))
       survivor.gender = self.doc.css(".infoboxtable td")[1].text.strip
@@ -30,10 +30,17 @@ class DBDArchive::Scraper
       lore_section = self.doc.css("div.floatleft ~ p")
       add_lore(survivor, lore_section)
       
-      # #exception for feng - attr stucture is different
-      # if survivor.name == "Feng Min"
+      #normalize Jane's lore - structured differently
+      if survivor.name == "Jane Romero"
+        survivor.lore.shift(5)
+      end
       
-      # end
+      # #exception for feng and laurie - attr stucture is different
+      if survivor.name == "Feng Min" || survivor.name == "Laurie Strode"
+        survivor.gender = self.doc.css(".infoboxtable td")[3].text.strip
+        survivor.role = self.doc.css(".infoboxtable td")[5].text.strip
+        survivor.nationality = self.doc.css(".infoboxtable td")[7].text.strip
+      end
     end
   end
   
