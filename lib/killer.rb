@@ -7,4 +7,8 @@ class DBDArchive::Killer < DBDArchive::Character
     super
   end
   
+  def self.all
+    DBDArchive::Character.all.select {|char| char.class == DBDArchive::Killer}
+  end
+  
 end
