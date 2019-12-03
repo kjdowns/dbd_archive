@@ -7,10 +7,18 @@ class DBDArchive::Scraper
     @doc = Nokogiri::HTML(open("https://deadbydaylight.gamepedia.com/Dead_by_Daylight_Wiki"))
   end
   
-  def scrape_surv_list
-    name_array = []
-    self.doc.css("#fpsurvivors div.fplinks div.link").each{|surv| name_array << surv.text}
-    name_array
+  def initialize_survivors
+    self.doc.css("#fpsurvivors div.fplinks div.link").each do |surv| 
+      DBDArchive::Survivor.new({:name => surv.text, :link => "https://deadbydaylight.gamepedia.com/#{surv.text.gsub(" ", "_")}"})
+    end
+    DBDArchive::Survivor.all
+  end
+  
+  def initialize_killers
+    self.doc.css("#fpkiller div.fplinks div.link").each do |kill| 
+      DBDArchive::Killer.new({:name => kill.text, :link => "https://deadbydaylight.gamepedia.com/#{kill.text.gsub(" ", "_")}"})
+    end
+    DBDArchive::Killer.all
   end
   
 end
