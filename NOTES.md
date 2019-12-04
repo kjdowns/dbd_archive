@@ -45,3 +45,5 @@
     - Killer 
     - Survivor 
     - General
+
+- initialization currently skips attrs that are themselves objects that have not been implemented

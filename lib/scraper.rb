@@ -4,13 +4,19 @@ class DBDArchive::Scraper
   attr_accessor :doc 
   
   def initialize
-    @doc = Nokogiri::HTML(open("https://deadbydaylight.gamepedia.com/Dead_by_Daylight_Wiki"))
+    self.set_base_path
+    #@doc = Nokogiri::HTML(open("https://deadbydaylight.gamepedia.com/Dead_by_Daylight_Wiki"))
+  end
+  
+  def set_base_path
+    self.doc = Nokogiri::HTML(open("https://deadbydaylight.gamepedia.com/Dead_by_Daylight_Wiki"))
   end
   
   def initialize_survivors
     self.doc.css("#fpsurvivors div.fplinks div.link").each do |surv| 
       DBDArchive::Survivor.new({:name => surv.text, :link => "https://deadbydaylight.gamepedia.com/#{surv.text.gsub(" ", "_")}"})
     end
+    self.set_base_path
     DBDArchive::Survivor.all
   end
   
@@ -18,6 +24,7 @@ class DBDArchive::Scraper
     self.doc.css("#fpkiller div.fplinks div.link").each do |kill| 
       DBDArchive::Killer.new({:name => kill.text, :link => "https://deadbydaylight.gamepedia.com/#{kill.text.gsub(" ", "_")}"})
     end
+    self.set_base_path
     DBDArchive::Killer.all
   end
   
@@ -42,11 +49,21 @@ class DBDArchive::Scraper
         survivor.nationality = self.doc.css(".infoboxtable td")[7].text.strip
       end
     end
+    self.set_base_path
+    DBDArchive::Survivor.all
   end
   
-  def add_lore(survivor, lore_section)
+  def add_killer_attr
+    DBDArchive::Killer.all.each do |killer|
+      self.doc
+    end
+    self.set_base_path
+    DBDArchive::Killer.all
+  end
+  
+  def add_lore(character, lore_section)
     lore_section.each do |section|
-      section.text.strip.include?("These are Perks") ? return : survivor.lore << section.text.strip
+      section.text.strip.include?("These are Perks") ? return : character.lore << section.text.strip
     end
   end
   
@@ -57,9 +74,9 @@ end
 # links for pages => https://deadbydaylight.gamepedia.com/#{name.gsub(" ", "_")}
 # killer list => doc.css("#fpkiller div.fplinks div.link") ~~name => list[i].text ~link list[i]
 # surv attr =>  ~~lore => doc.css("div.floatleft + p").text.strip 
-# FENG IS AN EXCEPTION FOR THESE
 # ~~gender => .css(".infoboxtable td")[1].text.strip ~~ role => .css(".infoboxtable td")[3].text ~~nat => .css(".infoboxtable td")[5].text
-# 
+# killer attr => ~~name .css(".infoboxtable td")[1].text.strip ~~alias [3] ~~ gender [5] ~~nationality [7] ~~alt_attack [13] ~~weapon [15]
+# ~~speed css(".infoboxtable td")[17].text.strip.split("| ")[1] ~~terror_radius [19]
 # 
 #
 # 
