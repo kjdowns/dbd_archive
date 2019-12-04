@@ -61,6 +61,13 @@ class DBDArchive::Scraper
       killer.gender = self.doc.css(".infoboxtable td")[5].text.strip
       killer.nationality = self.doc.css(".infoboxtable td")[7].text.strip
       killer.weapon = self.doc.css(".infoboxtable td")[15].text.strip
+      lore_section = self.doc.css("div.floatleft ~ p")
+      add_lore(killer, lore_section)
+      
+      #normalize lore - structured differently
+      if killer.kill_name == "The Plague" || killer.kill_name == "The Ghost Face"
+        killer.lore.shift(5)
+      end
       
       ##fixes exceptions##
       if killer.kill_name == "The Nurse" || killer.kill_name == "The Pig"
