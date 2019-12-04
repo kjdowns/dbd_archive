@@ -96,14 +96,3 @@ class DBDArchive::Scraper
   
 end
 
-
-# surv list => doc.css("#fpsurvivors div.fplinks div.link") ~~name => list[i].text
-# links for pages => https://deadbydaylight.gamepedia.com/#{name.gsub(" ", "_")}
-# killer list => doc.css("#fpkiller div.fplinks div.link") ~~name => list[i].text ~link list[i]
-# surv attr =>  ~~lore => doc.css("div.floatleft + p").text.strip 
-# ~~gender => .css(".infoboxtable td")[1].text.strip ~~ role => .css(".infoboxtable td")[3].text ~~nat => .css(".infoboxtable td")[5].text
-# killer attr => ~~name .css(".infoboxtable td")[1].text.strip ~~alias [3] ~~ gender [5] ~~nationality [7] ~~weapon [15]
-# ~~speed css(".infoboxtable td")[17].text.strip.split("| ")[1] ~~terror_radius [19]
-# 
-#
-# 
