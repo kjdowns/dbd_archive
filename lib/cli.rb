@@ -3,7 +3,8 @@ class DBDArchive::CLI
   
   attr_accessor :input, :menu
 
-  def call 
+  def call
+    initialize_environment
     greeting
     main_menu
     menu_handler until self.input == "exit"
@@ -80,11 +81,21 @@ class DBDArchive::CLI
   end
   
   def killers_menu
-    #for each item in killer.all print killer names
+    select_prompt
+    DBDArchive::Killer.all.each_with_index(1) do |killer, i|
+      puts "#{i}. #{killer.kill_name}"
+    end
+    set_menu("killers_menu")
+    get_input
   end
   
   def survivors_menu
-    #for each item in survivor.all print surv names
+    select_prompt
+    DBDArchive::Survivor.all.each_with_index(1) do |survivor, i|
+      puts "#{i}. #{survivor.name}"
+    end
+    set_menu("survivors_menu")
+    get_input
   end
   
   def help_menu
@@ -105,9 +116,21 @@ class DBDArchive::CLI
     self.input = gets.strip.downcase
   end
   
+  def input_to_index
+    self.input - 1
+  end
+  
   def select_prompt
     puts ""
     puts "Choose an item to learn more about."
+  end
+  
+  def initialize_environment
+    a = DBDArchive::Scraper.new 
+    a.initialize_survivors
+    a.add_survivor_attr
+    a.initialize_killers
+    a.add_killer_attr
   end
 
 end
