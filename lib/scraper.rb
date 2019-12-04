@@ -75,7 +75,7 @@ class DBDArchive::Scraper
         killer.gender = self.doc.css(".infoboxtable td")[3].text.strip
         killer.nationality = self.doc.css(".infoboxtable td")[5].text.strip
         killer.weapon = self.doc.css(".infoboxtable td")[9].text.strip
-      elsif killer.kill_name == "The Legion" || killer.kill_name == "The Spirit"
+      elsif killer.kill_name == "The Legion" || killer.kill_name == "The Spirit" || killer.kill_name == "The Oni"
         killer.nickname = "None"
         killer.gender = self.doc.css(".infoboxtable td")[3].text.strip
         killer.nationality = self.doc.css(".infoboxtable td")[5].text.strip
