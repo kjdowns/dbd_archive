@@ -11,11 +11,12 @@ class DBDArchive::CLI
   def initialize 
     initialize_environment
     update_menu_const
+    @menu = "main_menu"
   end
 
   def call
     greeting
-    main_menu
+    #main_menu
     menu_handler until self.input == "exit"
   end
   
@@ -42,82 +43,90 @@ class DBDArchive::CLI
   def menu_handler
     case self.menu 
       when "main_menu"
-        main_menu_input
-      when "character_menu"
-        character_menu_input
-      when "killers_menu"
-        #killers_menu_input
-      when "survivors_menu"
-        #survivors_menu_input
-      when "help"
+        display_menu(self.menu.to_sym)
+        get_input
+    end
+  end
+  
+  # def menu_handler
+  #   case self.menu 
+  #     when "main_menu"
+  #       main_menu_input
+  #     when "character_menu"
+  #       character_menu_input
+  #     when "killers_menu"
+  #       #killers_menu_input
+  #     when "survivors_menu"
+  #       #survivors_menu_input
+  #     when "help"
         
-    end
-  end
+  #   end
+  # end
   
-  def main_menu
-    select_prompt
-    puts "1. Characters"
-    puts "2. Realms"
-    puts "3. Items"
-    puts "4. Addons"
-    puts "5. Offerings"
-    puts "6. Shrine of Secrets"
-    puts ""
-    set_menu("main_menu")
-    get_input
-  end
+  # def main_menu
+  #   select_prompt
+  #   puts "1. Characters"
+  #   puts "2. Realms"
+  #   puts "3. Items"
+  #   puts "4. Addons"
+  #   puts "5. Offerings"
+  #   puts "6. Shrine of Secrets"
+  #   puts ""
+  #   set_menu("main_menu")
+  #   get_input
+  # end
   
-  def main_menu_input
-    case self.input
-      when "1"
-        character_menu
-      when "2"
-        realm_menu
-      when "3"
-        item_menu
-      when "4"
-        addon_menu
-      when "5"
-        offering_menu
-      when "6"
-        shrine_menu
-    end
-  end
+  # def main_menu_input
+  #   case self.input
+  #     when "1"
+  #       character_menu
+  #     when "2"
+  #       realm_menu
+  #     when "3"
+  #       item_menu
+  #     when "4"
+  #       addon_menu
+  #     when "5"
+  #       offering_menu
+  #     when "6"
+  #       shrine_menu
+  #   end
+  # end
   
-  def character_menu
-    select_prompt
-    puts "1. Killers"
-    puts "2. Survivors"
-    set_menu("character_menu")
-    get_input
-  end
+  # def character_menu
+  #   select_prompt
+  #   puts "1. Killers"
+  #   puts "2. Survivors"
+  #   set_menu("character_menu")
+  #   get_input
+  # end
   
-  def character_menu_input
-    case self.input
-      when "1"
-        killers_menu
-      when "2"
-        survivors_menu
-    end
-  end
+  # def character_menu_input
+  #   case self.input
+  #     when "1"
+  #       killers_menu
+  #     when "2"
+  #       survivors_menu
+  #   end
+  # end
   
-  def killers_menu
-    select_prompt
-    DBDArchive::Killer.all.each.with_index(1) do |killer, i|
-      puts "#{i}. #{killer.kill_name}"
-    end
-    set_menu("killers_menu")
-    get_input
-  end
+  # def killers_menu
+  #   select_prompt
+  #   DBDArchive::Killer.all.each.with_index(1) do |killer, i|
+  #     puts "#{i}. #{killer.kill_name}"
+  #   end
+  #   set_menu("killers_menu")
+  #   get_input
+  # end
   
-  def survivors_menu
-    select_prompt
-    DBDArchive::Survivor.all.each.with_index(1) do |survivor, i|
-      puts "#{i}. #{survivor.name}"
-    end
-    set_menu("survivors_menu")
-    get_input
-  end
+  # def survivors_menu
+  #   select_prompt
+  #   DBDArchive::Survivor.all.each.with_index(1) do |survivor, i|
+  #     puts "#{i}. #{survivor.name}"
+  #   end
+  #   set_menu("survivors_menu")
+  #   get_input
+  # end
   
   def help_menu
     puts ""
