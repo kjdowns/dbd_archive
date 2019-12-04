@@ -2,6 +2,11 @@
 class DBDArchive::CLI
   
   attr_accessor :input, :menu
+  
+  MENU_ITEMS = {
+    :main_menu => ["Characters", "Realms", "Items", "Addons", "Offerings", "Shrine of Secrets"],
+    :character_menu => ["Killers", "Survivors"]
+  }
 
   def call
     initialize_environment
@@ -17,6 +22,12 @@ class DBDArchive::CLI
     puts "Make a selection using the number of the item you wish to select - "
     puts "or type help for a list of commands."
     puts ""
+  end
+  
+  def display_menu(key)
+    MENU_ITEMS[key].each.with_index(1) do |menu_item, i|
+      puts "#{i}. #{menu_item}"
+    end
   end
   
   def menu_handler
@@ -42,7 +53,6 @@ class DBDArchive::CLI
     puts "4. Addons"
     puts "5. Offerings"
     puts "6. Shrine of Secrets"
-    puts "7. Trivia"
     puts ""
     set_menu("main_menu")
     get_input
@@ -62,8 +72,6 @@ class DBDArchive::CLI
         offering_menu
       when "6"
         shrine_menu
-      when "7"
-        trivia_menu
     end
   end
   
