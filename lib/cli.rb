@@ -1,7 +1,7 @@
 
 class DBDArchive::CLI
   
-  attr_accessor :input, :menu
+  attr_accessor :input, :menu, :valid_menus
   
   MENU_ITEMS = {
     :main_menu => ["Characters", "Realms", "Items", "Addons", "Offerings", "Shrine of Secrets"],
@@ -11,6 +11,7 @@ class DBDArchive::CLI
   def initialize 
     initialize_environment
     update_menu_const
+    @valid_menus = MENU_ITEMS.map{|k, v| k.to_s}
     @menu = "main_menu"
   end
   
@@ -69,6 +70,7 @@ class DBDArchive::CLI
   def display_and_update_per_input
     display_menu(self.menu.to_sym)
     get_input
+    validate_input
     update_menu(input_to_index)
   end
   
@@ -102,10 +104,22 @@ class DBDArchive::CLI
   
   def get_input
     self.input = gets.strip.downcase
+  end
+  
+  def validate_input
     if self.input.to_i == 0 
       self.menu = self.input
+      if !self.valid_menus.include?(self.menu)
+        puts "Invalid input - please try again or type `help` for a list of commands"
+        get_input
+        validate_input
+      end
     else
-      self.input
+      if self.input > MENU_ITEMS[self.menu.to_sym].length
+        put "Invalid Input - no item with that list number - try again or type `help`"
+        get_input
+        validate_input
+      end
     end
   end
   
