@@ -5,7 +5,7 @@ class DBDArchive::CLI
   
   MENU_ITEMS = {
     :main_menu => ["Characters", "Realms", "Items", "Addons", "Offerings", "Shrine of Secrets"],
-    :character_menu => ["Killers", "Survivors"]
+    :characters_menu => ["Killers", "Survivors"]
   }
   
   def initialize 
@@ -45,7 +45,17 @@ class DBDArchive::CLI
       when "main_menu"
         display_menu(self.menu.to_sym)
         get_input
+        update_menu(input_to_index)
+      when "characters_menu"
+        display_menu(self.menu.to_sym)
+        get_input
+        update_menu(input_to_index)
     end
+  end
+  
+  def update_menu(index)
+    item_selected = MENU_ITEMS[self.menu.to_sym][index].downcase
+    set_menu("#{item_selected}_menu")
   end
   
   # def menu_handler
@@ -161,7 +171,7 @@ class DBDArchive::CLI
   end
   
   def input_to_index
-    self.input - 1
+    self.input.to_i - 1
   end
   
   def select_prompt
