@@ -66,7 +66,6 @@ class DBDArchive::CLI
     select_prompt
     puts "1. Killers"
     puts "2. Survivors"
-    puts "3. Lore Characters"
     set_menu("character_menu")
     get_input
   end
@@ -77,8 +76,6 @@ class DBDArchive::CLI
         killers_menu
       when "2"
         survivors_menu
-      when "3"
-        lore_char_menu
     end
   end
   
@@ -88,10 +85,6 @@ class DBDArchive::CLI
   
   def survivors_menu
     #for each item in survivor.all print surv names
-  end
-  
-  def lore_char_menu
-    #for each item in character.all !surv !killer print char names
   end
   
   def help_menu
