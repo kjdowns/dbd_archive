@@ -56,13 +56,25 @@ class DBDArchive::Scraper
   def add_killer_attr
     DBDArchive::Killer.all.each do |killer|
       self.doc = Nokogiri::HTML(open(killer.link))
-      killer.name = self.doc.css(".infoboxtable td")[1].text.strip
-      killer.nickname = self.doc.css(".infoboxtable td")[3].text.strip
-      killer.gender = self.doc.css(".infoboxtable td")[5].text.strip
-      killer.nationality = self.doc.css(".infoboxtable td")[7].text.strip
-      killer.weapon = self.doc.css(".infoboxtable td")[15].text.strip
-      killer.speed = self.doc.css(".infoboxtable td")[17].text.strip.split("| ")[1]
-      killer.terror_radius = self.doc.css(".infoboxtable td")[19].text.strip
+      
+      #killers with alt speed have different pattern
+      if #ms killers
+      
+      #killers with no nickname have different pattern
+      elsif #no nickname killers
+      
+      #other killers that dont match 
+      elsif #misc deviated killers
+      
+      else #default pattern
+        killer.name = self.doc.css(".infoboxtable td")[1].text.strip
+        killer.nickname = self.doc.css(".infoboxtable td")[3].text.strip
+        killer.gender = self.doc.css(".infoboxtable td")[5].text.strip
+        killer.nationality = self.doc.css(".infoboxtable td")[7].text.strip
+        killer.weapon = self.doc.css(".infoboxtable td")[15].text.strip
+        killer.speed = self.doc.css(".infoboxtable td")[17].text.strip.split("| ")[1]
+        killer.terror_radius = self.doc.css(".infoboxtable td")[19].text.strip
+      end
     end
     self.set_base_path
     DBDArchive::Killer.all
