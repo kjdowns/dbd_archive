@@ -25,6 +25,10 @@ class DBDArchive::CLI
         main_menu_input
       when "character_menu"
         character_menu_input
+      when "killers_menu"
+        #killers_menu_input
+      when "survivors_menu"
+        #survivors_menu_input
       when "help"
         
     end
