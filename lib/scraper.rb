@@ -22,7 +22,7 @@ class DBDArchive::Scraper
   
   def initialize_killers
     self.doc.css("#fpkiller div.fplinks div.link").each do |kill| 
-      DBDArchive::Killer.new({:name => kill.text, :link => "https://deadbydaylight.gamepedia.com/#{kill.text.gsub(" ", "_")}"})
+      DBDArchive::Killer.new({:kill_name => kill.text, :link => "https://deadbydaylight.gamepedia.com/#{kill.text.gsub(" ", "_")}"})
     end
     self.set_base_path
     DBDArchive::Killer.all
@@ -55,7 +55,14 @@ class DBDArchive::Scraper
   
   def add_killer_attr
     DBDArchive::Killer.all.each do |killer|
-      self.doc
+      self.doc = Nokogiri::HTML(open(killer.link))
+      killer.name = self.doc.css(".infoboxtable td")[1].text.strip
+      killer.nickname = self.doc.css(".infoboxtable td")[3].text.strip
+      killer.gender = self.doc.css(".infoboxtable td")[5].text.strip
+      killer.nationality = self.doc.css(".infoboxtable td")[7].text.strip
+      killer.weapon = self.doc.css(".infoboxtable td")[15].text.strip
+      killer.speed = self.doc.css(".infoboxtable td")[17].text.strip.split("| ")[1]
+      killer.terror_radius = self.doc.css(".infoboxtable td")[19].text.strip
     end
     self.set_base_path
     DBDArchive::Killer.all
@@ -75,7 +82,7 @@ end
 # killer list => doc.css("#fpkiller div.fplinks div.link") ~~name => list[i].text ~link list[i]
 # surv attr =>  ~~lore => doc.css("div.floatleft + p").text.strip 
 # ~~gender => .css(".infoboxtable td")[1].text.strip ~~ role => .css(".infoboxtable td")[3].text ~~nat => .css(".infoboxtable td")[5].text
-# killer attr => ~~name .css(".infoboxtable td")[1].text.strip ~~alias [3] ~~ gender [5] ~~nationality [7] ~~alt_attack [13] ~~weapon [15]
+# killer attr => ~~name .css(".infoboxtable td")[1].text.strip ~~alias [3] ~~ gender [5] ~~nationality [7] ~~weapon [15]
 # ~~speed css(".infoboxtable td")[17].text.strip.split("| ")[1] ~~terror_radius [19]
 # 
 #

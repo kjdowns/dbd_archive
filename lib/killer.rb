@@ -1,7 +1,7 @@
 
 class DBDArchive::Killer < DBDArchive::Character
   
-  attr_accessor :kill_name, :alias, :realm, :power, :alt_attack, :weapon, :terror_radius
+  attr_accessor :kill_name, :nickname, :realm, :power, :weapon, :terror_radius
   
   def initialize(attr_hash)
     super
