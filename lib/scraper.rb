@@ -61,6 +61,21 @@ class DBDArchive::Scraper
       killer.gender = self.doc.css(".infoboxtable td")[5].text.strip
       killer.nationality = self.doc.css(".infoboxtable td")[7].text.strip
       killer.weapon = self.doc.css(".infoboxtable td")[15].text.strip
+      
+      ##fixes exceptions##
+      if killer.kill_name == "The Nurse" || killer.kill_name == "The Pig"
+        killer.nickname = "None"
+        killer.gender = self.doc.css(".infoboxtable td")[3].text.strip
+        killer.nationality = self.doc.css(".infoboxtable td")[5].text.strip
+        killer.weapon = self.doc.css(".infoboxtable td")[9].text.strip
+      elsif killer.kill_name == "The Legion" || killer.kill_name == "The Spirit"
+        killer.nickname = "None"
+        killer.gender = self.doc.css(".infoboxtable td")[3].text.strip
+        killer.nationality = self.doc.css(".infoboxtable td")[5].text.strip
+        killer.weapon = self.doc.css(".infoboxtable td")[13].text.strip
+      elsif killer.kill_name == "The Nightmare"
+        killer.weapon = self.doc.css(".infoboxtable td")[13].text.strip
+      end
     end
     self.set_base_path
     DBDArchive::Killer.all
