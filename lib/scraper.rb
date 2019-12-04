@@ -61,7 +61,6 @@ class DBDArchive::Scraper
       killer.gender = self.doc.css(".infoboxtable td")[5].text.strip
       killer.nationality = self.doc.css(".infoboxtable td")[7].text.strip
       killer.weapon = self.doc.css(".infoboxtable td")[15].text.strip
-      killer.terror_radius = self.doc.css(".infoboxtable td")[19].text.strip
     end
     self.set_base_path
     DBDArchive::Killer.all
