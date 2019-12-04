@@ -82,7 +82,7 @@ class DBDArchive::CLI
   
   def killers_menu
     select_prompt
-    DBDArchive::Killer.all.each_with_index(1) do |killer, i|
+    DBDArchive::Killer.all.each.with_index(1) do |killer, i|
       puts "#{i}. #{killer.kill_name}"
     end
     set_menu("killers_menu")
@@ -91,7 +91,7 @@ class DBDArchive::CLI
   
   def survivors_menu
     select_prompt
-    DBDArchive::Survivor.all.each_with_index(1) do |survivor, i|
+    DBDArchive::Survivor.all.each.with_index(1) do |survivor, i|
       puts "#{i}. #{survivor.name}"
     end
     set_menu("survivors_menu")
