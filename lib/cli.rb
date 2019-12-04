@@ -30,6 +30,7 @@ class DBDArchive::CLI
   end
   
   def display_menu(key)
+    select_prompt
     MENU_ITEMS[key].each.with_index(1) do |menu_item, i|
       puts "#{i}. #{menu_item}"
     end
