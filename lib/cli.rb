@@ -103,13 +103,26 @@ class DBDArchive::CLI
   end
   
   def help_menu
-    #list of commands
-    #Input the number of a list item and press enter to learn more about that item 
-    #or see more selections from that item 
-    #menu - main menu
+    puts ""
+    puts "==========================================="
+    puts "==========================================="
+    puts "Input the number of an item and press enter"
+    puts "to select that item."
+    puts ""
+    puts "Commands listed below can be entered in any"
+    puts "input field to navigate to the specified menu"
+    puts "---------------------------------------------"
+    puts "help - help menu"
+    puts "main menu - main menu"
+    puts "back - returns to current menu"
+    puts "prev - returns to previous menu"
+    puts "exit - exits the program"
+    puts ""
+    puts "==========================================="
+    puts "==========================================="
     #killer - enter killer menu 
     #survivor - enter surv menu 
-    #exit - exit program
+    get_input
   end
   
   def set_menu(menu_value)
@@ -127,6 +140,13 @@ class DBDArchive::CLI
   def select_prompt
     puts ""
     puts "Choose an item to learn more about."
+  end
+  
+  def handle_special_inputs
+    case self.input
+      when "main menu"
+      when "help"
+    end
   end
   
   def initialize_environment
