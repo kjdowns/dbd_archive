@@ -16,7 +16,6 @@ class DBDArchive::CLI
 
   def call
     greeting
-    #main_menu
     menu_handler until self.input == "exit"
   end
   
@@ -44,19 +43,25 @@ class DBDArchive::CLI
   def menu_handler
     case self.menu 
       when "main_menu"
-        display_menu(self.menu.to_sym)
-        get_input
-        update_menu(input_to_index)
+        display_and_update_per_input
       when "characters_menu"
-        display_menu(self.menu.to_sym)
-        get_input
-        update_menu(input_to_index)
+        display_and_update_per_input
+      when "killers_menu"
+        display_and_update_per_input
+      when "survivors_menu"
+        display_and_update_per_input
     end
   end
   
   def update_menu(index)
     item_selected = MENU_ITEMS[self.menu.to_sym][index].downcase
     set_menu("#{item_selected}_menu")
+  end
+  
+  def display_and_update_per_input
+    display_menu(self.menu.to_sym)
+    get_input
+    update_menu(input_to_index)
   end
   
   # def menu_handler
