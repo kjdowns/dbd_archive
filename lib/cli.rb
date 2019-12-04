@@ -7,9 +7,13 @@ class DBDArchive::CLI
     :main_menu => ["Characters", "Realms", "Items", "Addons", "Offerings", "Shrine of Secrets"],
     :character_menu => ["Killers", "Survivors"]
   }
+  
+  def initialize 
+    initialize_environment
+    update_menu_const
+  end
 
   def call
-    initialize_environment
     greeting
     main_menu
     menu_handler until self.input == "exit"
@@ -28,6 +32,11 @@ class DBDArchive::CLI
     MENU_ITEMS[key].each.with_index(1) do |menu_item, i|
       puts "#{i}. #{menu_item}"
     end
+  end
+  
+  def update_menu_const
+    MENU_ITEMS[:killers_menu] = DBDArchive::Killer.all.map {|killer| killer.kill_name} 
+    MENU_ITEMS[:survivors_menu] = DBDArchive::Survivor.all.map {|survivor| survivor.name}
   end
   
   def menu_handler
@@ -129,7 +138,8 @@ class DBDArchive::CLI
     puts "==========================================="
     puts "==========================================="
     #killer - enter killer menu 
-    #survivor - enter surv menu 
+    #survivor - enter surv menu
+    set_menu("help_menu")
     get_input
   end
   
