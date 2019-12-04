@@ -1,7 +1,7 @@
 
 class DBDArchive::Character
   
-  attr_accessor :name, :gender, :nationality, :speed, :perks, :lore, :link 
+  attr_accessor :name, :gender, :nationality, :perks, :lore, :link 
   
   @@all = []
   
