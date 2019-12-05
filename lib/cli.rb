@@ -1,7 +1,7 @@
 
 class DBDArchive::CLI
   
-  attr_accessor :input, :menu, :valid_menus, :current_char
+  attr_accessor :input, :menu, :prev_menu, :valid_menus, :current_char
   
   MENU_ITEMS = {
     :main_menu => ["Characters", "Realms", "Items", "Addons", "Offerings", "Shrine of Secrets"],
@@ -55,6 +55,7 @@ class DBDArchive::CLI
     when "kill_attr_menu"
       DBDArchive::MenuArt.kill_attr_menu(self.current_char)
       get_input
+      update_menu(input_to_index)
     when "survivors_menu"
       display_menu(self.menu.to_sym)
       get_input
@@ -64,6 +65,9 @@ class DBDArchive::CLI
     when "surv_attr_menu"
       DBDArchive::MenuArt.surv_attr_menu(self.current_char)
       get_input
+      update_menu(input_to_index)
+    when "lore_menu"
+      display_lore
     else
       display_menu(self.menu.to_sym)
       get_input
@@ -80,6 +84,22 @@ class DBDArchive::CLI
   
   def display_info_card(current_char)
     DBDArchive::MenuArt.send("#{current_char.name.downcase.split(" ")[0]}_splash")
+  end
+  
+  def display_lore
+    index = 0
+    while index < current_char.lore.length
+      puts self.current_char.lore[index]
+      puts "next? (y/n)..."
+      get_input
+      self.input == "y" ? index += 1 : set_menu(self.prev_menu); index = current_char.lore.length + 1
+    end
+    if self.input == "y"
+      set_menu("main_menu")
+      puts "End of character lore. Returning to main menu"
+    else
+      puts "Returning to previous menu"
+    end
   end
   
   def update_menu(index)
@@ -121,6 +141,7 @@ class DBDArchive::CLI
   end
   
   def set_menu(menu_value)
+    self.prev_menu = self.menu
     self.menu = menu_value
   end
   

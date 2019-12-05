@@ -92,6 +92,8 @@ class DBDArchive::Scraper
     lore_section.each do |section|
       section.text.strip.include?("These are Perks") ? return : character.lore << section.text.strip
     end
+    #last item is empty and should be removed
+    character.lore.pop()
   end
   
 end
