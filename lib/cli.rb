@@ -6,7 +6,8 @@ class DBDArchive::CLI
   MENU_ITEMS = {
     :main_menu => ["Characters", "Realms", "Items", "Addons", "Offerings", "Shrine of Secrets"],
     :characters_menu => ["Killers", "Survivors"],
-    :kill_attr_menu => ["Lore", "Power", "Perks", "Addons"]
+    :kill_attr_menu => ["Lore", "Power", "Perks", "Addons"],
+    :surv_attr_menu => ["Lore", "Perks"]
   }
   
   def initialize 
@@ -49,13 +50,19 @@ class DBDArchive::CLI
       display_menu(self.menu.to_sym)
       get_input
       set_current_char(input_to_index)
-      display_info_card
+      display_info_card(self.current_char)
       set_menu("kill_attr_menu")
     when "kill_attr_menu"
       DBDArchive::MenuArt.kill_attr_menu(self.current_char)
       get_input
     when "survivors_menu"
       display_menu(self.menu.to_sym)
+      get_input
+      set_current_char(input_to_index)
+      display_info_card(self.current_char)
+      set_menu("surv_attr_menu")
+    when "surv_attr_menu"
+      DBDArchive::MenuArt.surv_attr_menu(self.current_char)
       get_input
     else
       display_menu(self.menu.to_sym)
@@ -71,8 +78,8 @@ class DBDArchive::CLI
     end
   end
   
-  def display_info_card
-    DBDArchive::MenuArt.trapper_splash
+  def display_info_card(current_char)
+    DBDArchive::MenuArt.send("#{current_char.name.downcase.split(" ")[0]}_splash")
   end
   
   def update_menu(index)
@@ -106,7 +113,6 @@ class DBDArchive::CLI
   
   def set_current_char(index)
     char_name = MENU_ITEMS[self.menu.to_sym][index]
-    binding.pry
     if char_name.include? "The"
       self.current_char = DBDArchive::Killer.all.detect{|killer| killer.kill_name == char_name}
     else
