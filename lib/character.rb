@@ -16,3 +16,4 @@ class DBDArchive::Character
   end
   
 end
+

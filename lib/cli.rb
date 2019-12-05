@@ -5,7 +5,8 @@ class DBDArchive::CLI
   
   MENU_ITEMS = {
     :main_menu => ["Characters", "Realms", "Items", "Addons", "Offerings", "Shrine of Secrets"],
-    :characters_menu => ["Killers", "Survivors"]
+    :characters_menu => ["Killers", "Survivors"],
+    :context_menu => []
   }
   
   def initialize 
@@ -43,15 +44,18 @@ class DBDArchive::CLI
   end
   
   def menu_handler
-    case self.menu 
-      when "main_menu"
-        display_and_update_per_input
-      when "characters_menu"
-        display_and_update_per_input
-      when "killers_menu"
-        display_and_update_per_input
-      when "survivors_menu"
-        display_and_update_per_input
+    case self.menu
+    when "killers_menu"
+      display_menu(self.menu.to_sym)
+      get_input
+    when ":survivors_menu"
+      display_menu(self.menu.to_sym)
+      get_input
+    when "context_menu"
+    else
+      display_menu(self.menu.to_sym)
+      get_input
+      update_menu(input_to_index)
     end
   end
   
@@ -65,13 +69,6 @@ class DBDArchive::CLI
   def update_menu(index)
     item_selected = MENU_ITEMS[self.menu.to_sym][index].downcase
     set_menu("#{item_selected}_menu")
-  end
-  
-  def display_and_update_per_input
-    display_menu(self.menu.to_sym)
-    get_input
-    validate_input
-    update_menu(input_to_index)
   end
   
   def help_menu
@@ -106,22 +103,22 @@ class DBDArchive::CLI
     self.input = gets.strip.downcase
   end
   
-  def validate_input
-    if self.input.to_i == 0 
-      self.menu = self.input
-      if !self.valid_menus.include?(self.menu)
-        puts "Invalid input - please try again or type `help` for a list of commands"
-        get_input
-        validate_input
-      end
-    else
-      if self.input > MENU_ITEMS[self.menu.to_sym].length
-        put "Invalid Input - no item with that list number - try again or type `help`"
-        get_input
-        validate_input
-      end
-    end
-  end
+  # def validate_input
+  #   if self.input.to_i == 0 
+  #     self.menu = self.input
+  #     if !self.valid_menus.include?(self.menu)
+  #       puts "Invalid input - please try again or type `help` for a list of commands"
+  #       get_input
+  #       validate_input
+  #     end
+  #   else
+  #     if self.input > MENU_ITEMS[self.menu.to_sym].length
+  #       put "Invalid Input - no item with that list number - try again or type `help`"
+  #       get_input
+  #       validate_input
+  #     end
+  #   end
+  # end
   
   def input_to_index
     self.input.to_i - 1
