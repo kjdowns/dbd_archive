@@ -96,5 +96,12 @@ class DBDArchive::Scraper
     character.lore.pop()
   end
   
+  def initialize_realms
+    self.doc.css("div#fpRealms div.fplinks a").each do |realm|
+      
+    end
+    binding.pry
+  end
+  
 end
 
