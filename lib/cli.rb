@@ -4,7 +4,7 @@ class DBDArchive::CLI
   attr_accessor :input, :menu, :prev_menu, :valid_menus, :current_char
   
   MENU_ITEMS = {
-    :main_menu => ["Characters", "Realms", "Items", "Addons", "Offerings", "Shrine of Secrets"],
+    :main_menu => ["Characters", "Realms", "Items", "Addons", "Offerings"],
     :characters_menu => ["Killers", "Survivors"],
     :kill_attr_menu => ["Lore", "Power", "Perks", "Addons"],
     :surv_attr_menu => ["Lore", "Perks"]

@@ -5,7 +5,6 @@ class DBDArchive::Scraper
   
   def initialize
     self.set_base_path
-    #@doc = Nokogiri::HTML(open("https://deadbydaylight.gamepedia.com/Dead_by_Daylight_Wiki"))
   end
   
   def set_base_path
@@ -98,9 +97,24 @@ class DBDArchive::Scraper
   
   def initialize_realms
     self.doc.css("div#fpRealms div.fplinks a").each do |realm|
-      
+      unless realm.text.empty?
+        DBDArchive::Realm.new({:name => realm.text, :link => "https://deadbydaylight.gamepedia.com/#{realm.text.gsub(" ", "_")}"})
+      end
     end
-    binding.pry
+    DBDArchive::Realm.all
+  end
+  
+  def add_realm_attr
+    DBDArchive::Realm.all.each do |realm|
+      binding.pry
+      #special case to handle non ascii character
+      if realm.name.include?("é")
+        realm.link = "https://deadbydaylight.gamepedia.com/L%C3%A9ry%27s_Memorial_Institute"
+      end
+      self.doc = Nokogiri::HTML(open(realm.link))
+      self.doc.css(".wikitable")[0].css("td center a").each{|node| realm.maps << node.text}
+    end
+    DBDArchive::Realm.all
   end
   
 end

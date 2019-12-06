@@ -49,7 +49,6 @@ class DBDArchive::MenuArt
     puts "Alias: #{killer.nickname}"
     puts "Gender: #{killer.gender}"
     puts "Nationality: #{killer.nationality}"
-    puts "Realm: #{killer.realm}"
     puts "Power: #{killer.power}"
     puts "Weapon: #{killer.weapon}"
     puts "==================================================================="
