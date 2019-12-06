@@ -89,7 +89,7 @@ class DBDArchive::Scraper
   
   def add_lore(character, lore_section)
     lore_section.each do |section|
-      section.text.strip.include?("These are Perks") ? return : character.lore << section.text.strip
+      section.text.strip.include?("These are Perks") || section.text.strip.include?("This piece of Lore") ? return : character.lore << section.text.strip
     end
     #last item is empty and should be removed
     character.lore.pop()
@@ -106,13 +106,14 @@ class DBDArchive::Scraper
   
   def add_realm_attr
     DBDArchive::Realm.all.each do |realm|
-      binding.pry
       #special case to handle non ascii character
       if realm.name.include?("é")
         realm.link = "https://deadbydaylight.gamepedia.com/L%C3%A9ry%27s_Memorial_Institute"
       end
       self.doc = Nokogiri::HTML(open(realm.link))
       self.doc.css(".wikitable")[0].css("td center a").each{|node| realm.maps << node.text}
+      lore = self.doc.css("p i")
+      add_lore(realm, lore)
     end
     DBDArchive::Realm.all
   end

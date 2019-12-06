@@ -7,6 +7,7 @@ class DBDArchive::Realm
   
   def initialize(attr_hash)
     attr_hash.each {|attr, value| self.send("#{attr}=", value)}
+    @lore = []
     @maps = []
     @@all << self
   end
