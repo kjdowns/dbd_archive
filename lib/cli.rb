@@ -23,11 +23,14 @@ class DBDArchive::CLI
     a.add_survivor_attr
     a.initialize_killers
     a.add_killer_attr
+    a.initialize_realms
+    a.add_realm_attr
   end
   
   def update_menu_const
     MENU_ITEMS[:killers_menu] = DBDArchive::Killer.all.map {|killer| killer.kill_name} 
     MENU_ITEMS[:survivors_menu] = DBDArchive::Survivor.all.map {|survivor| survivor.name}
+    MENU_ITEMS[:realms_menu] = DBDArchive::Realm.all.map {|realm| realm.name}
   end
 
   def call
