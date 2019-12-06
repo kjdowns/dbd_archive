@@ -35,6 +35,7 @@ class DBDArchive::Scraper
       survivor.nationality = self.doc.css(".infoboxtable td")[5].text.strip
       lore_section = self.doc.css("div.floatleft ~ p")
       add_lore(survivor, lore_section)
+      add_perks(survivor)
       
       #normalize Jane's lore - structured differently
       if survivor.name == "Jane Romero"
@@ -47,6 +48,7 @@ class DBDArchive::Scraper
         survivor.role = self.doc.css(".infoboxtable td")[5].text.strip
         survivor.nationality = self.doc.css(".infoboxtable td")[7].text.strip
       end
+      
     end
     self.set_base_path
     DBDArchive::Survivor.all
@@ -62,6 +64,7 @@ class DBDArchive::Scraper
       killer.weapon = self.doc.css(".infoboxtable td")[15].text.strip
       lore_section = self.doc.css("div.floatleft ~ p")
       add_lore(killer, lore_section)
+      add_perks(killer)
       
       #normalize lore - structured differently
       if killer.kill_name == "The Plague" || killer.kill_name == "The Ghost Face"
@@ -93,6 +96,17 @@ class DBDArchive::Scraper
     end
     #last item is empty and should be removed
     character.lore.pop()
+  end
+  
+  def add_perks(char)
+    counter = 0 
+    offset = 1
+    while counter < 3
+      char.perks << {:name => doc.css(".wikitable th a")[offset].text.strip,
+                     :description => doc.css(".wikitable td")[counter].text.strip}
+      offset += 2 
+      counter += 1
+    end
   end
   
   def add_realm_lore(realm)
