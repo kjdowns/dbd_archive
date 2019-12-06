@@ -69,6 +69,9 @@ class DBDArchive::CLI
       DBDArchive::MenuArt.surv_attr_menu(self.current_char)
       get_input
       update_menu(input_to_index)
+    when "realms_menu"
+      display_menu(self.menu.to_sym)
+      get_input
     when "lore_menu"
       display_lore
     else
@@ -99,7 +102,7 @@ class DBDArchive::CLI
     end
     if self.input == "y"
       set_menu("main_menu")
-      puts "End of character lore. Returning to main menu"
+      puts "End of available lore. Returning to main menu"
     else
       puts "Returning to previous menu"
     end

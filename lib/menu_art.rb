@@ -73,4 +73,8 @@ class DBDArchive::MenuArt
     puts "2. Perks"
   end
   
+  def self.realm_menu(realm)
+    
+  end
+  
 end
