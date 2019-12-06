@@ -72,6 +72,9 @@ class DBDArchive::CLI
     when "realms_menu"
       display_menu(self.menu.to_sym)
       get_input
+      set_current_char_as_realm(input_to_index)
+      DBDArchive::MenuArt.realm_menu(current_char)
+      set_menu("lore_menu")
     when "lore_menu"
       display_lore
     else
@@ -144,6 +147,11 @@ class DBDArchive::CLI
     else
       self.current_char = DBDArchive::Survivor.all.detect{|survivor| survivor.name == char_name}
     end
+  end
+  
+  def set_current_char_as_realm(index)
+    realm_name = MENU_ITEMS[self.menu.to_sym][index]
+    self.current_char = DBDArchive::Realm.all.detect{|realm| realm.name == realm_name}
   end
   
   def set_menu(menu_value)

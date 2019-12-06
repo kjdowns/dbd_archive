@@ -74,7 +74,9 @@ class DBDArchive::MenuArt
   end
   
   def self.realm_menu(realm)
-    
+    puts "realm menu stub"
+    puts realm.name
+    realm.maps.each{|map| puts "map"}
   end
   
 end
