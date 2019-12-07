@@ -15,6 +15,16 @@ class DBDArchive::Scraper
     self.doc.css("#fpsurvivors div.fplinks div.link").each do |surv| 
       DBDArchive::Survivor.new({:name => surv.text, :link => "https://deadbydaylight.gamepedia.com/#{surv.text.gsub(" ", "_")}"})
     end
+    
+    #scrape data to initalize items class variable
+    self.doc = Nokogiri::HTML(open("https://deadbydaylight.gamepedia.com/Items"))
+    names = self.doc.css(".wikitable h4 a")
+    desc = self.doc.css('.wikitable td[colspan="5"] center')
+    DBDArchive::Survivor.items.each.with_index do |item , i|
+      item[:name] = names[i].text.strip
+      item[:description] = desc[i].text.strip
+    end
+    
     self.set_base_path
     DBDArchive::Survivor.all
   end
