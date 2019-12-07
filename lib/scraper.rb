@@ -47,13 +47,6 @@ class DBDArchive::Scraper
       add_lore(survivor, lore_section)
       add_perks(survivor)
       
-      #billy index for power is off by one
-      if killer.kill_name == "The Hillbilly"
-        killer.power = self.doc.css("span.mw-headline")[6].text.gsub("Power: ","")
-      else
-        killer.power = self.doc.css("span.mw-headline")[5].text.gsub("Power: ","")
-      end
-      
       #normalize Jane's lore - structured differently
       if survivor.name == "Jane Romero"
         survivor.lore.shift(5)
@@ -82,6 +75,13 @@ class DBDArchive::Scraper
       lore_section = self.doc.css("div.floatleft ~ p")
       add_lore(killer, lore_section)
       add_perks(killer)
+      
+      #billy index for power is off by one
+      if killer.kill_name == "The Hillbilly"
+        killer.power = self.doc.css("span.mw-headline")[6].text.gsub("Power: ","")
+      else
+        killer.power = self.doc.css("span.mw-headline")[5].text.gsub("Power: ","")
+      end
       
       #normalize lore - structured differently
       if killer.kill_name == "The Plague" || killer.kill_name == "The Ghost Face"

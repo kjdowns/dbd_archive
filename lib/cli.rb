@@ -30,11 +30,13 @@ class DBDArchive::CLI
     MENU_ITEMS[:killers_menu] = DBDArchive::Killer.all.map {|killer| killer.kill_name} 
     MENU_ITEMS[:survivors_menu] = DBDArchive::Survivor.all.map {|survivor| survivor.name}
     MENU_ITEMS[:realms_menu] = DBDArchive::Realm.all.map {|realm| realm.name}
+    MENU_ITEMS[:items_menu] = DBDArchive::Survivor.items.map {|item| item[:name]}
   end
 
   def call
     greeting
     menu_handler until self.input == "exit"
+    puts "Exiting the Archive..."
   end
   
   def greeting
