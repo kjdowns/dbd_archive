@@ -4,10 +4,9 @@ class DBDArchive::CLI
   attr_accessor :input, :menu, :prev_menu, :valid_menus, :current_char
   
   MENU_ITEMS = {
-    :main_menu => ["Characters", "Realms", "Items", "Powers"],
+    :main_menu => ["Characters", "Realms", "Items"],
     :characters_menu => ["Killers", "Survivors"],
-    :kill_attr_menu => ["Lore", "Power", "Perks"],
-    :surv_attr_menu => ["Lore", "Perks"]
+    :char_attr_menu => ["Lore", "Perks"]
   }
   
   def initialize 
@@ -49,24 +48,18 @@ class DBDArchive::CLI
   
   def menu_handler
     case self.menu
-    when "killers_menu"
+    when "killers_menu" , "survivors_menu"
       display_menu(self.menu.to_sym)
       get_input
       set_current_char(input_to_index)
       display_info_card(self.current_char)
-      set_menu("kill_attr_menu")
-    when "kill_attr_menu"
-      DBDArchive::MenuArt.kill_attr_menu(self.current_char)
-      get_input
-      update_menu(input_to_index)
-    when "survivors_menu"
-      display_menu(self.menu.to_sym)
-      get_input
-      set_current_char(input_to_index)
-      display_info_card(self.current_char)
-      set_menu("surv_attr_menu")
-    when "surv_attr_menu"
-      DBDArchive::MenuArt.surv_attr_menu(self.current_char)
+      set_menu("char_attr_menu")
+    when "char_attr_menu"
+      if self.current_char.is_a?(DBDArchive::Survivor)
+        DBDArchive::MenuArt.surv_attr_menu(self.current_char)
+      elsif self.current_char.is_a?(DBDArchive::Killer)
+        DBDArchive::MenuArt.kill_attr_menu(self.current_char)
+      end
       get_input
       update_menu(input_to_index)
     when "realms_menu"

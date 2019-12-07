@@ -57,9 +57,7 @@ class DBDArchive::MenuArt
     puts "Would you like to know more about #{killer.kill_name}?"
     puts ""
     puts "1. Lore"
-    puts "2. Power"
-    puts "3. Perks"
-    puts "4. Addons"
+    puts "2. Perks"
   end
   
   def self.surv_attr_menu(surv)
