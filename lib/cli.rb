@@ -156,23 +156,6 @@ class DBDArchive::CLI
     self.input = gets.strip.downcase
   end
   
-  # def validate_input
-  #   if self.input.to_i == 0 
-  #     self.menu = self.input
-  #     if !self.valid_menus.include?(self.menu)
-  #       puts "Invalid input - please try again or type `help` for a list of commands"
-  #       get_input
-  #       validate_input
-  #     end
-  #   else
-  #     if self.input > MENU_ITEMS[self.menu.to_sym].length
-  #       put "Invalid Input - no item with that list number - try again or type `help`"
-  #       get_input
-  #       validate_input
-  #     end
-  #   end
-  # end
-  
   def input_to_index
     self.input.to_i - 1
   end
