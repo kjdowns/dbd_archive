@@ -846,4 +846,54 @@ class DBDArchive::MenuArt
     realm.maps.each{|map| puts "map"}
   end
   
+  def self.about_menu
+    puts <<~ABOUT
+    ======================================================================
+    ======================================================================
+                           -------------------------
+                           What is Dead by Daylight?
+                           -------------------------
+                           
+      Dead by Daylight is an indie horror game developed and published 
+      by Behaviour Interactive. Dead by Daylight is both an action and 
+      survival horror multiplayer game in which one crazed, unstoppable 
+      Killer hunts down four Survivors through a terrifying nightmarish 
+      world in a deadly game of Cat & Mouse. It was released on 
+      14 June 2016 for PC (Steam), 20 June 2017 for Console (XONE/PS4) 
+      and 24 September 2019 for Nintendo Switch.
+      
+      ------------------------------------------------------------------
+
+      - As a Survivor, go in alone or team up with friends to face an 
+        unknown threat. Use Items at hand, unlocked abilities and 
+        environmental objects to outwit the Monster and escape from its 
+        killing grounds.
+        
+      - Set in procedurally generated Maps, you will never know what to 
+        expect, what you are facing and how to get away. You will have 
+        to make desperate choices under stressful circumstances. Every 
+        decision impacts your chances of survival.
+        
+      - Killers come from all horror genres, from brutal slashers to 
+        terrifying paranormal entities. Master these Monsters unique 
+        Powers and exploit the knowledge of your home to track, hunt 
+        down, break and sacrifice your victims before they get a chance 
+        to escape to safety.
+          
+      - The asymmetry, procedural factors and unique thinking of human 
+        individuals make each Dead by Daylight trial an unexpected 
+        scenario where the combined behaviour of each Player creates a 
+        truly terrifying and thrilling narrative.
+        
+      - Dead by Daylight Characters each have a deep progression and 
+        Unlockables which can be customised into your own personal 
+        strategy. Use your experience, skills, and load-out to climb 
+        up the competitive ladder and you might eventually discover the 
+        truth beyond The Fog.
+        
+  ======================================================================
+  ======================================================================
+  ABOUT
+  end
+  
 end
