@@ -840,6 +840,25 @@ class DBDArchive::MenuArt
     puts "2. Perks"
   end
   
+  def self.perk_list(char)
+    puts "========================================"
+    puts "========================================"
+    puts ""
+    
+    if char.is_a?(DBDArchive::Killer)
+      print "#{char.kill_name}" 
+    else
+      print "#{char.name}"
+    end
+    
+    puts " has three unique perks:"
+    puts ""
+    char.perks.each.with_index(1) {|perk, i| puts "#{i}. #{perk[:name]}"}
+    puts ""
+    puts "========================================"
+    puts "========================================"
+  end
+  
   def self.realm_menu(realm)
     puts "realm menu stub"
     puts realm.name

@@ -117,7 +117,7 @@ class DBDArchive::CLI
   end
   
   def display_perks
-    
+    DBDArchive::MenuArt.perk_list(self.current_char)
   end
   
   def update_menu(index)
