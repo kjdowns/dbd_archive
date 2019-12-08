@@ -4,7 +4,7 @@ class DBDArchive::CLI
   attr_accessor :input, :menu, :prev_menu, :valid_menus, :current_char
   
   MENU_ITEMS = {
-    :main_menu => ["Characters", "Realms", "Items", "About Game"],
+    :main_menu => ["Characters", "Realms", "Items", "About"],
     :characters_menu => ["Killers", "Survivors"],
     :char_attr_menu => ["Lore", "Perks"]
   }
@@ -72,6 +72,11 @@ class DBDArchive::CLI
       set_menu("lore_menu")
     when "lore_menu"
       display_lore
+    when "about_menu"
+      DBDArchive::MenuArt.about_menu
+      puts "press enter to return to main menu"
+      gets
+      set_menu("main_menu")
     else
       display_menu(self.menu.to_sym)
       get_input
@@ -109,6 +114,10 @@ class DBDArchive::CLI
     else
       puts "Returning to previous menu"
     end
+  end
+  
+  def display_perks
+    
   end
   
   def update_menu(index)
