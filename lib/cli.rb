@@ -4,7 +4,7 @@ class DBDArchive::CLI
   attr_accessor :input, :menu, :prev_menu, :valid_menus, :current_char
   
   MENU_ITEMS = {
-    :main_menu => ["Characters", "Realms", "Items"],
+    :main_menu => ["Characters", "Realms", "Items", "About Game"],
     :characters_menu => ["Killers", "Survivors"],
     :char_attr_menu => ["Lore", "Perks"]
   }
@@ -87,7 +87,12 @@ class DBDArchive::CLI
   end
   
   def display_info_card(current_char)
-    DBDArchive::MenuArt.send("#{current_char.name.downcase.split(" ")[0]}_splash")
+    #there are two davids - if statement assigns last name for method call
+    if current_char.name == "David Tapp"
+      DBDArchive::MenuArt.send("#{current_char.name.downcase.split(" ")[1]}_splash")
+    else
+      DBDArchive::MenuArt.send("#{current_char.name.downcase.split(" ")[0]}_splash")
+    end
   end
   
   def display_lore
@@ -121,8 +126,14 @@ class DBDArchive::CLI
     puts "Commands listed below can be entered in any"
     puts "input field to navigate to the specified menu"
     puts "---------------------------------------------"
+    puts ""
     puts "help - help menu"
-    puts "main menu - main menu"
+    puts "main - main menu"
+    puts "killers - killers menu"
+    puts "survivors - survivors menu"
+    puts "realms - realms menu"
+    puts "items - items menu"
+    puts "about - about game"
     puts "back - returns to current menu"
     puts "prev - returns to previous menu"
     puts "exit - exits the program"
@@ -156,6 +167,12 @@ class DBDArchive::CLI
   
   def get_input
     self.input = gets.strip.downcase
+  end
+  
+  def handle_input
+    if self.input == 0 
+      self.menu = "#{self.input}_menu"
+    end
   end
   
   def input_to_index
