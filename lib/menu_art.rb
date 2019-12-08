@@ -812,6 +812,7 @@ class DBDArchive::MenuArt
   end
   
   def self.kill_attr_menu(killer)
+    puts ""
     puts "Name: #{killer.name}"
     puts "Alias: #{killer.nickname}"
     puts "Gender: #{killer.gender}"
@@ -821,29 +822,29 @@ class DBDArchive::MenuArt
     puts "Perks: #{killer.perks[0][:name]}, #{killer.perks[1][:name]}, #{killer.perks[2][:name]}"
     puts "==================================================================="
     puts ""
-    puts "Would you like to know more about #{killer.kill_name}?"
-    puts ""
     puts "1. Lore"
     puts "2. Perks"
+    puts "==================================================================="
+    puts "Would you like to know more about #{killer.kill_name}?"
   end
   
   def self.surv_attr_menu(surv)
+    puts ""
     puts "Name: #{surv.name}"
     puts "Gender: #{surv.gender}"
     puts "Nationality: #{surv.nationality}"
     puts "Role: #{surv.role}"
     puts "Perks: #{surv.perks[0][:name]}, #{surv.perks[1][:name]}, #{surv.perks[2][:name]}"
     puts "======================================================================= "
-    puts "Would you like to know more about #{surv.name}"
     puts ""
     puts "1. Lore"
     puts "2. Perks"
+    puts "======================================================================= "
+    puts "Would you like to know more about #{surv.name}"
   end
   
   def self.perk_list(char)
     puts "========================================"
-    puts "========================================"
-    puts ""
     
     if char.is_a?(DBDArchive::Killer)
       print "#{char.kill_name}" 
@@ -856,7 +857,18 @@ class DBDArchive::MenuArt
     char.perks.each.with_index(1) {|perk, i| puts "#{i}. #{perk[:name]}"}
     puts ""
     puts "========================================"
+  end
+  
+  def self.perk_description(char, index)
     puts "========================================"
+    puts ""
+    puts "#{char.perks[index][:name]}: "
+    puts ""
+    puts "#{char.perks[index][:description]}"
+    puts ""
+    puts "========================================"
+    puts "Press enter to return to perk list..."
+    gets
   end
   
   def self.realm_menu(realm)

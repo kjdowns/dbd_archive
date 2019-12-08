@@ -72,6 +72,12 @@ class DBDArchive::CLI
       set_menu("lore_menu")
     when "lore_menu"
       display_lore
+    when "perks_menu"
+        display_perks
+        select_prompt
+        get_input
+        DBDArchive::MenuArt.perk_description(self.current_char, input_to_index)
+        set_menu("perks_menu")
     when "about_menu"
       DBDArchive::MenuArt.about_menu
       puts "press enter to return to main menu"
@@ -189,7 +195,6 @@ class DBDArchive::CLI
   end
   
   def select_prompt
-    puts ""
     puts "Choose an item to learn more about."
   end
 
