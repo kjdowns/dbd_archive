@@ -871,6 +871,18 @@ class DBDArchive::MenuArt
     gets
   end
   
+  def self.item_description(item)
+    puts "========================================"
+    puts ""
+    puts "#{item[:name]}: "
+    puts ""
+    puts "#{item[:description]}"
+    puts ""
+    puts "========================================"
+    puts "Press enter to return to items list..."
+    gets
+  end
+  
   def self.realm_menu(realm)
     puts "realm menu stub"
     puts realm.name
@@ -924,7 +936,9 @@ class DBDArchive::MenuArt
         
   ======================================================================
   ======================================================================
+  Press enter to return to main menu...
   ABOUT
+    gets
   end
   
 end

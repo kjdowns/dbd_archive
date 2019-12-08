@@ -78,10 +78,13 @@ class DBDArchive::CLI
         get_input
         DBDArchive::MenuArt.perk_description(self.current_char, input_to_index)
         set_menu("perks_menu")
+    when "items_menu"
+      display_menu(self.menu.to_sym)
+      get_input
+      DBDArchive::MenuArt.item_description(DBDArchive::Survivor.items[input_to_index])
+      set_menu("items_menu")
     when "about_menu"
       DBDArchive::MenuArt.about_menu
-      puts "press enter to return to main menu"
-      gets
       set_menu("main_menu")
     else
       display_menu(self.menu.to_sym)
