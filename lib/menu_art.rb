@@ -884,13 +884,18 @@ class DBDArchive::MenuArt
   end
   
   def self.realm_menu(realm)
-    puts "realm menu stub"
-    puts realm.name
-    realm.maps.each{|map| puts "map"}
+    puts "======================================================"
+    puts ""
+    puts "#{realm.name}:"
+    puts ""
+    puts "Maps: #{realm.maps.join(", ")}"
+    puts "======================================================"
+    puts ""
   end
   
   def self.about_menu
     puts <<~ABOUT
+    
     ======================================================================
     ======================================================================
                            -------------------------

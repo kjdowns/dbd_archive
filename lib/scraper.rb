@@ -126,12 +126,6 @@ class DBDArchive::Scraper
     end
   end
   
-  def add_realm_lore(realm)
-      self.doc.css("p i").each do |section|
-        section.text.strip.include?("This piece of Lore") ? return : realm.lore << section.text.strip
-      end
-  end
-  
   def initialize_realms
     self.doc.css("div#fpRealms div.fplinks a").each do |realm|
       unless realm.text.empty?
@@ -139,6 +133,12 @@ class DBDArchive::Scraper
       end
     end
     DBDArchive::Realm.all
+  end
+  
+  def add_realm_lore(realm)
+    self.doc.css("p i").each do |section|
+      section.text.strip.include?("This piece of Lore") ? return : realm.lore << section.text.strip
+    end
   end
   
   def add_realm_attr
