@@ -13,6 +13,7 @@ class DBDArchive::CLI
     initialize_environment
     update_menu_const
     @valid_menus = MENU_ITEMS.map{|k, v| k.to_s}
+    @valid_menus.push("about_menu", "help_menu", "back_menu", "exit_menu")
     @menu = "main_menu"
   end
   
@@ -85,15 +86,15 @@ class DBDArchive::CLI
     when "lore_menu"
       display_lore
     when "perks_menu"
-        display_perks
-        select_prompt
-        get_input
-        if self.input.to_i == 0 
-          handle_text_input
-        else
-          DBDArchive::MenuArt.perk_description(self.current_char, input_to_index)
-          set_menu("perks_menu")
-        end
+      display_perks
+      select_prompt
+      get_input
+      if self.input.to_i == 0 
+        handle_text_input
+      else
+        DBDArchive::MenuArt.perk_description(self.current_char, input_to_index)
+        set_menu("perks_menu")
+      end
     when "items_menu"
       display_menu(self.menu.to_sym)
       get_input
@@ -106,6 +107,11 @@ class DBDArchive::CLI
     when "about_menu"
       DBDArchive::MenuArt.about_menu
       set_menu("main_menu")
+    when "help_menu"
+      DBDArchive::MenuArt.help_menu
+      set_menu("main_menu")
+    when "back_menu"
+      set_menu(self.prev_menu)
     else
       display_menu(self.menu.to_sym)
       get_input
@@ -137,15 +143,24 @@ class DBDArchive::CLI
     index = 0
     while index < current_char.lore.length
       puts self.current_char.lore[index]
-      puts "next? (y/n)..."
-      get_input
-      self.input == "y" ? index += 1 : set_menu(self.prev_menu); index = current_char.lore.length + 1
-    end
-    if self.input == "y"
-      set_menu("main_menu")
-      puts "End of available lore. Returning to main menu"
-    else
-      puts "Returning to previous menu"
+      if index == current_char.lore.length - 1
+        puts "End of available lore - press enter to return to main menu"
+        gets
+        set_menu("main_menu")
+      else
+        puts "continue? (y/n)..."
+        temp_input = gets.strip.downcase
+      end
+      case temp_input
+        when "y"
+          index += 1
+        when "n"
+          index = current_char.lore.length + 1
+          puts "returning to previous menu..."
+          set_menu(self.prev_menu)
+        else
+          puts "Invalid input - select either y or n\n"
+      end
     end
   end
   
@@ -156,36 +171,6 @@ class DBDArchive::CLI
   def update_menu(index)
     item_selected = MENU_ITEMS[self.menu.to_sym][index].downcase
     set_menu("#{item_selected}_menu")
-  end
-  
-  def help_menu
-    puts ""
-    puts "==========================================="
-    puts "==========================================="
-    puts "Input the number of an item and press enter"
-    puts "to select that item."
-    puts ""
-    puts "Commands listed below can be entered in any"
-    puts "input field to navigate to the specified menu"
-    puts "---------------------------------------------"
-    puts ""
-    puts "help - help menu"
-    puts "main - main menu"
-    puts "killers - killers menu"
-    puts "survivors - survivors menu"
-    puts "realms - realms menu"
-    puts "items - items menu"
-    puts "about - about game"
-    puts "back - returns to current menu"
-    puts "prev - returns to previous menu"
-    puts "exit - exits the program"
-    puts ""
-    puts "==========================================="
-    puts "==========================================="
-    #killer - enter killer menu 
-    #survivor - enter surv menu
-    set_menu("help_menu")
-    get_input
   end
   
   def set_current_char(index)

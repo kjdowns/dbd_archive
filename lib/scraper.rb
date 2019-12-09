@@ -45,6 +45,7 @@ class DBDArchive::Scraper
       survivor.nationality = self.doc.css(".infoboxtable td")[5].text.strip
       lore_section = self.doc.css("div.floatleft ~ p")
       add_lore(survivor, lore_section)
+      survivor.lore.pop
       add_perks(survivor)
       
       #normalize Jane's lore - structured differently
@@ -74,6 +75,7 @@ class DBDArchive::Scraper
       killer.weapon = self.doc.css(".infoboxtable td")[15].text.strip
       lore_section = self.doc.css("div.floatleft ~ p")
       add_lore(killer, lore_section)
+      killer.lore.pop
       add_perks(killer)
       
       #billy index for power is off by one

@@ -893,6 +893,33 @@ class DBDArchive::MenuArt
     puts ""
   end
   
+   def self.help_menu
+    puts ""
+    puts "==========================================="
+    puts "==========================================="
+    puts "Input the number of an item and press enter"
+    puts "to select that item."
+    puts ""
+    puts "Commands listed below can be entered in any"
+    puts "input field to navigate to the specified menu"
+    puts "---------------------------------------------"
+    puts ""
+    puts "help - help menu"
+    puts "main - main menu"
+    puts "killers - killers menu"
+    puts "survivors - survivors menu"
+    puts "realms - realms menu"
+    puts "items - items menu"
+    puts "about - about game"
+    puts "back - returns to current menu"
+    puts "exit - exits the program"
+    puts ""
+    puts "==========================================="
+    puts "==========================================="
+    puts "Press enter to return to main menu..."
+    gets
+  end
+  
   def self.about_menu
     puts <<~ABOUT
     
