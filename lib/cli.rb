@@ -53,9 +53,13 @@ class DBDArchive::CLI
     when "killers_menu" , "survivors_menu"
       display_menu(self.menu.to_sym)
       get_input
-      set_current_char(input_to_index)
-      display_info_card(self.current_char)
-      set_menu("char_attr_menu")
+      if self.input.to_i == 0 
+        handle_text_input
+      else
+        set_current_char(input_to_index)
+        display_info_card(self.current_char)
+        set_menu("char_attr_menu")
+      end
     when "char_attr_menu"
       if self.current_char.is_a?(DBDArchive::Survivor)
         DBDArchive::MenuArt.surv_attr_menu(self.current_char)
@@ -63,33 +67,53 @@ class DBDArchive::CLI
         DBDArchive::MenuArt.kill_attr_menu(self.current_char)
       end
       get_input
-      update_menu(input_to_index)
+      if self.input.to_i == 0 
+        handle_text_input
+      else
+        update_menu(input_to_index)
+      end
     when "realms_menu"
       display_menu(self.menu.to_sym)
       get_input
-      set_current_char_as_realm(input_to_index)
-      DBDArchive::MenuArt.realm_menu(current_char)
-      set_menu("lore_menu")
+      if self.input.to_i == 0 
+        handle_text_input
+      else
+        set_current_char_as_realm(input_to_index)
+        DBDArchive::MenuArt.realm_menu(current_char)
+        set_menu("lore_menu")
+      end
     when "lore_menu"
       display_lore
     when "perks_menu"
         display_perks
         select_prompt
         get_input
-        DBDArchive::MenuArt.perk_description(self.current_char, input_to_index)
-        set_menu("perks_menu")
+        if self.input.to_i == 0 
+          handle_text_input
+        else
+          DBDArchive::MenuArt.perk_description(self.current_char, input_to_index)
+          set_menu("perks_menu")
+        end
     when "items_menu"
       display_menu(self.menu.to_sym)
       get_input
-      DBDArchive::MenuArt.item_description(DBDArchive::Survivor.items[input_to_index])
-      set_menu("items_menu")
+      if self.input.to_i == 0 
+        handle_text_input
+      else
+        DBDArchive::MenuArt.item_description(DBDArchive::Survivor.items[input_to_index])
+        set_menu("items_menu")
+      end
     when "about_menu"
       DBDArchive::MenuArt.about_menu
       set_menu("main_menu")
     else
       display_menu(self.menu.to_sym)
       get_input
-      update_menu(input_to_index)
+      if self.input.to_i == 0 
+        handle_text_input
+      else
+        update_menu(input_to_index)
+      end
     end
   end
   
@@ -185,10 +209,14 @@ class DBDArchive::CLI
   
   def get_input
     self.input = gets.strip.downcase
+    if self.input.to_i > MENU_ITEMS[self.menu.to_sym].length || (self.input.to_i == 0 && !self.valid_menus.include?("#{self.input}_menu"))
+      puts "Invalid input, please try again."
+      get_input
+    end
   end
   
-  def handle_input
-    if self.input == 0 
+  def handle_text_input
+    if self.valid_menus.include?("#{self.input}_menu") 
       self.menu = "#{self.input}_menu"
     end
   end
