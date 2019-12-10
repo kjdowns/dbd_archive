@@ -822,10 +822,10 @@ class DBDArchive::MenuArt
     puts "Perks: #{killer.perks[0][:name]}, #{killer.perks[1][:name]}, #{killer.perks[2][:name]}"
     puts "==================================================================="
     puts ""
+    puts "Would you like to know more about #{killer.kill_name}?"
     puts "1. Lore"
     puts "2. Perks"
     puts "==================================================================="
-    puts "Would you like to know more about #{killer.kill_name}?"
   end
   
   def self.surv_attr_menu(surv)
@@ -837,10 +837,10 @@ class DBDArchive::MenuArt
     puts "Perks: #{surv.perks[0][:name]}, #{surv.perks[1][:name]}, #{surv.perks[2][:name]}"
     puts "======================================================================= "
     puts ""
+    puts "Would you like to know more about #{surv.name}"
     puts "1. Lore"
     puts "2. Perks"
     puts "======================================================================= "
-    puts "Would you like to know more about #{surv.name}"
   end
   
   def self.perk_list(char)
@@ -891,6 +891,42 @@ class DBDArchive::MenuArt
     puts "Maps: #{realm.maps.join(", ")}"
     puts "======================================================"
     puts ""
+  end
+  
+  def self.greeting_splash
+    puts <<~GREETING
+    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    ================================================================================
+      ______               _   _            ______            _ _       _     _   
+      |  _  \             | | | |           |  _  \          | (_)     | |   | |  
+      | | | |___  __ _  __| | | |__  _   _  | | | |__ _ _   _| |_  __ _| |__ | |_ 
+      | | | / _ \/ _  |/ _  | |  _ \| | | | | | | / _  | | | | | |/ _  |  _ \| __|
+      | |/ /  __/ (_| | (_| | | |_) | |_| | | |/ / (_| | |_| | | | (_| | | | | |_ 
+      |___/ \___|\__ _|\__ _| |_ __/ \__  | |___/ \__ _|\__  |_|_|\__  |_| |_|\__|
+                                      __/ |              __/ |     __/ |          
+                                     |___/              |___/     |___/           
+    
+              |     '||''|.     ..|'''.| '||'  '||' '||' '||'  '|' '||''''|  
+             |||     ||   ||  .|'     '   ||    ||   ||   '|.  .'   ||  .    
+            |  ||    ||''|'   ||          ||''''||   ||    ||  |    ||''|    
+           .''''|.   ||   |.  '|.      .  ||    ||   ||     |||     ||       
+          .|.  .||. .||.  '|'  ''|....'  .||.  .||. .||.     |     .||.....| 
+    ================================================================================
+    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    GREETING
+    puts ""
+    puts "Welcome to the Dead by Daylight Archive!"
+    puts ""
+    puts "Make a selection using the number of the item you wish to select - "
+    puts "or type help for a list of commands."
+    puts "Press enter to open the archive..."
+    gets
+  end
+  
+  def self.exit_splash
+    puts "You have escaped The Entity's realm this time..."
+    puts "Thank you for visiting The Archive"
+    puts "exiting..."
   end
   
    def self.help_menu

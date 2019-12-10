@@ -35,18 +35,9 @@ class DBDArchive::CLI
   end
 
   def call
-    greeting
+    DBDArchive::MenuArt.greeting_splash
     menu_handler until self.input == "exit"
-    puts "Exiting the Archive..."
-  end
-  
-  def greeting
-    puts ""
-    puts "Welcome to the Dead by Daylight Archive!"
-    puts ""
-    puts "Make a selection using the number of the item you wish to select - "
-    puts "or type help for a list of commands."
-    puts ""
+    DBDArchive::MenuArt.exit_splash
   end
   
   def menu_handler
