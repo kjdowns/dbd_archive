@@ -1,9 +1,10 @@
-#################TESTING################
-# DbdArchive
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/dbd_archive`. To experiment with that code, run `bin/console` for an interactive prompt.
+# Dead by Daylight Archive
 
-TODO: Delete this and the text above, and describe your gem
+Dead by Daylight Archive is a Ruby CLI which scrapes the Dead by Daylight wiki to display various bits of information about the game to the user. 
+Some options include Characters, Items, Realms, etc.
+
+The Dead by Daylight wiki page can be found here : "https://deadbydaylight.gamepedia.com/Dead_by_Daylight_Wiki"
 
 ## Installation
 
@@ -23,7 +24,21 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Upon launching the application, users will be presented with a welcome splash screen. Pressing enter will direct the user to the main menu and allow them to choose from menu list items to learn more about their selection. At any point the user is prompted for input, they may enter a menu name in place of a list item number to be automatically directed to that menu. Entering 'exit' at any point will terminate the program for the user. 
+
+Below is a list of commands that may be used outside of number selection of menu items:
+
+"help - help menu"
+"main - main menu"
+"killers - killers menu"
+"survivors - survivors menu"
+"realms - realms menu"
+"items - items menu"
+"about - about game"
+"back - returns to current menu"
+"exit - exits the program"
+
+Points where the program states to press enter to continue are dummy input prompts and will return the program to the main menu regardless of input recieved. The purpose of this is to allow users time to read long menus, lore descriptions, or other long text outputs. If a menu redirect is desired, the user may enter that input upon return to the main menu.
 
 ## Development
 
