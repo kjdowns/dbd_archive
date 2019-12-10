@@ -6,7 +6,8 @@ class DBDArchive::CLI
   MENU_ITEMS = {
     :main_menu => ["Characters", "Realms", "Items", "About"],
     :characters_menu => ["Killers", "Survivors"],
-    :char_attr_menu => ["Lore", "Perks"]
+    :char_attr_menu => ["Lore", "Perks"],
+    :perks_menu => [1, 2, 3]
   }
   
   def initialize 
@@ -117,7 +118,7 @@ class DBDArchive::CLI
   def display_menu(key)
     select_prompt
     MENU_ITEMS[key].each.with_index(1) do |menu_item, i|
-      puts "#{i}. #{menu_item}"
+      puts "#{i}. #{menu_item}".magenta
     end
   end
   
@@ -133,13 +134,13 @@ class DBDArchive::CLI
   def display_lore
     index = 0
     while index < current_char.lore.length
-      puts self.current_char.lore[index]
+      puts self.current_char.lore[index].magenta
       if index == current_char.lore.length - 1
-        puts "End of available lore - press enter to return to main menu"
+        puts "End of available lore - press enter to return to main menu".magenta
         gets
         set_menu("main_menu")
       else
-        puts "continue? (y/n)..."
+        puts "continue? (y/n)...".magenta
         temp_input = gets.strip.downcase
       end
       case temp_input
@@ -147,10 +148,10 @@ class DBDArchive::CLI
           index += 1
         when "n"
           index = current_char.lore.length + 1
-          puts "returning to previous menu..."
+          puts "returning to previous menu...".magenta
           set_menu(self.prev_menu)
         else
-          puts "Invalid input - select either y or n\n"
+          puts "Invalid input - select either y or n\n".magenta
       end
     end
   end
@@ -202,7 +203,7 @@ class DBDArchive::CLI
   end
   
   def select_prompt
-    puts "Choose an item to learn more about."
+    puts "Choose an item to learn more about.".magenta
   end
 
 end

@@ -6,4 +6,5 @@ module DBDArchive
 end
 
 require 'open-uri'
+require 'colorize'
 require_all 'lib'

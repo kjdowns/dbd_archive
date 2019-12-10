@@ -2,7 +2,7 @@
 class DBDArchive::MenuArt
   
   def self.evan_splash
-    puts <<~TRAPPER
+    puts <<~TRAPPER.red
     =====================================================================
     =====================================================================
     @@@@@@@  @@@  @@@  @@@@@@@@  
@@ -33,7 +33,7 @@ class DBDArchive::MenuArt
   end
   
   def self.philip_splash
-    puts <<~WRAITH
+    puts <<~WRAITH.red
     =====================================================================
     =====================================================================
     @@@@@@@  @@@  @@@  @@@@@@@@  
@@ -64,7 +64,7 @@ class DBDArchive::MenuArt
   end
   
   def self.max_splash
-    puts <<~HILLBILLY
+    puts <<~HILLBILLY.red
     ==============================================================================
     ==============================================================================
     @@@@@@@  @@@  @@@  @@@@@@@@  
@@ -95,7 +95,7 @@ class DBDArchive::MenuArt
   end
   
   def self.sally_splash
-    puts <<~NURSE
+    puts <<~NURSE.red
     =====================================================================
     =====================================================================
     @@@@@@@  @@@  @@@  @@@@@@@@  
@@ -126,7 +126,7 @@ class DBDArchive::MenuArt
   end
   
   def self.michael_splash 
-    puts <<~SHAPE
+    puts <<~SHAPE.red
     =====================================================================
     =====================================================================
     @@@@@@@  @@@  @@@  @@@@@@@@  
@@ -157,7 +157,7 @@ class DBDArchive::MenuArt
   end
   
   def self.lisa_splash 
-    puts <<~HAG
+    puts <<~HAG.red
     =====================================================================
     =====================================================================
     @@@@@@@  @@@  @@@  @@@@@@@@     @@@  @@@   @@@@@@    @@@@@@@@  
@@ -176,7 +176,7 @@ class DBDArchive::MenuArt
   end
   
   def self.herman_splash
-    puts <<~DOCTOR
+    puts <<~DOCTOR.red
     =====================================================================
     =====================================================================
     @@@@@@@  @@@  @@@  @@@@@@@@  
@@ -207,7 +207,7 @@ class DBDArchive::MenuArt
   end
   
   def self.anna_splash 
-    puts <<~HUNTRESS
+    puts <<~HUNTRESS.red
     ===============================================================================
     ===============================================================================
     @@@@@@@  @@@  @@@  @@@@@@@@  
@@ -238,7 +238,7 @@ class DBDArchive::MenuArt
   end
   
   def self.bubba_splash
-    puts <<~CANNIBAL
+    puts <<~CANNIBAL.red
     ===========================================================================
     ===========================================================================
     @@@@@@@  @@@  @@@  @@@@@@@@  
@@ -269,7 +269,7 @@ class DBDArchive::MenuArt
   end
   
   def self.frederick_splash
-    puts <<~NIGHTMARE
+    puts <<~NIGHTMARE.red
     =========================================================================================
     =========================================================================================
     @@@@@@@  @@@  @@@  @@@@@@@@     @@@  @@@  @@@   @@@@@@@@  @@@  @@@  @@@@@@@  
@@ -300,7 +300,7 @@ class DBDArchive::MenuArt
   end
   
   def self.amanda_splash 
-    puts <<~PIG
+    puts <<~PIG.red
     =====================================================================
     =====================================================================
     @@@@@@@  @@@  @@@  @@@@@@@@     @@@@@@@   @@@   @@@@@@@@  
@@ -319,7 +319,7 @@ class DBDArchive::MenuArt
   end
   
   def self.kenneth_splash 
-    puts <<~CLOWN
+    puts <<~CLOWN.red
     =====================================================================
     =====================================================================
     @@@@@@@  @@@  @@@  @@@@@@@@  
@@ -351,7 +351,7 @@ class DBDArchive::MenuArt
   end
   
   def self.rin_splash 
-    puts <<~SPIRIT
+    puts <<~SPIRIT.red
     =====================================================================
     =====================================================================
     @@@@@@@  @@@  @@@  @@@@@@@@  
@@ -382,7 +382,7 @@ class DBDArchive::MenuArt
   end
   
   def self.frank_splash
-    puts <<~LEGION
+    puts <<~LEGION.red
     =====================================================================
     =====================================================================
     @@@@@@@  @@@  @@@  @@@@@@@@  
@@ -413,7 +413,7 @@ class DBDArchive::MenuArt
   end
   
   def self.adiris_splash 
-    puts <<~PLAGUE
+    puts <<~PLAGUE.red
     =====================================================================
     =====================================================================
     @@@@@@@  @@@  @@@  @@@@@@@@  
@@ -444,7 +444,7 @@ class DBDArchive::MenuArt
   end
   
   def self.danny_splash 
-    puts <<~GHOSTFACE
+    puts <<~GHOSTFACE.red
     ======================================================================================
     ======================================================================================
     @@@@@@@  @@@  @@@  @@@@@@@@          @@@@@@@@  @@@  @@@   @@@@@@    @@@@@@   @@@@@@@  
@@ -475,7 +475,7 @@ class DBDArchive::MenuArt
   end
   
   def self.unknown_splash 
-    puts <<~DEMOGORGON
+    puts <<~DEMOGORGON.red
     ==========================================================================================================
     ==========================================================================================================
     @@@@@@@  @@@  @@@  @@@@@@@@     @@@@@@@   @@@@@@@@  @@@@@@@@@@    @@@@@@   
@@ -506,7 +506,7 @@ class DBDArchive::MenuArt
   end
   
   def self.kazan_splash
-    puts <<~ONI
+    puts <<~ONI.red
     =====================================================================
     =====================================================================
     @@@@@@@  @@@  @@@  @@@@@@@@      @@@@@@   @@@  @@@  @@@  
@@ -525,7 +525,7 @@ class DBDArchive::MenuArt
   end
   
   def self.dwight_splash
-    puts <<~DWIGHT
+    puts <<~DWIGHT.cyan
     =========================================================================
     =========================================================================
       ____           _       _     _     _____     _       __ _      _     _ 
@@ -540,7 +540,7 @@ class DBDArchive::MenuArt
   end
   
   def self.meg_splash
-  puts <<~MEG 
+  puts <<~MEG.cyan 
   =========================================================================
   =========================================================================
    __  __              _____ _                               
@@ -555,7 +555,7 @@ class DBDArchive::MenuArt
   end
   
   def self.claudette_splash
-    puts <<~CLAUDETTE
+    puts <<~CLAUDETTE.cyan
     ========================================================================
     ========================================================================
       ____ _                 _      _   _         __  __                _ 
@@ -569,7 +569,7 @@ class DBDArchive::MenuArt
   end
   
   def self.jake_splash
-    puts <<~JAKE
+    puts <<~JAKE.cyan
     =========================================================================
     =========================================================================
          _       _          ____            _    
@@ -583,7 +583,7 @@ class DBDArchive::MenuArt
   end
   
   def self.nea_splash
-    puts <<~NEA
+    puts <<~NEA.cyan
     =========================================================================
     =========================================================================
      _   _              _  __          _                     
@@ -597,7 +597,7 @@ class DBDArchive::MenuArt
   end
   
   def self.laurie_splash
-    puts <<~LAURIE
+    puts <<~LAURIE.cyan
     =========================================================================
     =========================================================================
      _                     _        ____  _                 _      
@@ -611,7 +611,7 @@ class DBDArchive::MenuArt
   end
   
   def self.ace_splash
-    puts <<~ACE
+    puts <<~ACE.cyan
     =========================================================================
     =========================================================================
         _             __     ___                     _   _ 
@@ -625,7 +625,7 @@ class DBDArchive::MenuArt
   end
   
   def self.bill_splash
-    puts <<~BILL
+    puts <<~BILL.cyan
     =========================================================================
     =========================================================================
      ____  _ _ _    ___                 _               _    
@@ -639,7 +639,7 @@ class DBDArchive::MenuArt
   end
   
   def self.feng_splash
-    puts <<~FENG
+    puts <<~FENG.cyan
     =========================================================================
     =========================================================================
      _____                  __  __ _       
@@ -654,7 +654,7 @@ class DBDArchive::MenuArt
   end
   
   def self.david_splash
-    puts <<~DAVID
+    puts <<~DAVID.cyan
     =========================================================================
     =========================================================================
      ____              _     _   _  ___             
@@ -669,7 +669,7 @@ class DBDArchive::MenuArt
   end
   
   def self.quentin_splash
-    puts <<~QUENTIN
+    puts <<~QUENTIN.cyan
     =========================================================================
     =========================================================================
       ___                   _   _         ____            _ _   _     
@@ -683,7 +683,7 @@ class DBDArchive::MenuArt
   end
   
   def self.tapp_splash
-    puts <<~DAVID
+    puts <<~DAVID.cyan
     =========================================================================
     =========================================================================
      ____              _     _   _____                 
@@ -698,7 +698,7 @@ class DBDArchive::MenuArt
   end
   
   def self.kate_splash
-    puts <<~KATE
+    puts <<~KATE.cyan
     =========================================================================
     =========================================================================
      _  __     _         ____                             
@@ -712,7 +712,7 @@ class DBDArchive::MenuArt
   end
   
   def self.adam_splash
-    puts <<~ADAM
+    puts <<~ADAM.cyan
     =========================================================================
     =========================================================================
         _       _                   _____                     _     
@@ -726,7 +726,7 @@ class DBDArchive::MenuArt
   end
   
   def self.jeff_splash
-    puts <<~JEFF
+    puts <<~JEFF.cyan
     =========================================================================
     =========================================================================
          _       __  __       _       _                                
@@ -740,7 +740,7 @@ class DBDArchive::MenuArt
   end
   
   def self.jane_splash
-    puts <<~JANE
+    puts <<~JANE.cyan
     =========================================================================
     =========================================================================
          _                    ____                                
@@ -754,7 +754,7 @@ class DBDArchive::MenuArt
   end
   
   def self.ash_splash
-    puts <<~ASH
+    puts <<~ASH.cyan
     =========================================================================
     =========================================================================
         _        _      __        ___ _ _ _                     
@@ -768,7 +768,7 @@ class DBDArchive::MenuArt
   end
   
   def self.nancy_splash
-    puts <<~NANCY
+    puts <<~NANCY.cyan
     =========================================================================
     =========================================================================
      _   _                         __        ___               _           
@@ -783,7 +783,7 @@ class DBDArchive::MenuArt
   end
   
   def self.steve_splash
-    puts <<~STEVE
+    puts <<~STEVE.cyan
     ==============================================================================
     ==============================================================================
      ____  _                   _   _                 _             _              
@@ -798,7 +798,7 @@ class DBDArchive::MenuArt
   end
   
   def self.yui_splash
-    puts <<~YUI
+    puts <<~YUI.cyan
     =========================================================================
     =========================================================================
     __   __     _   _  ___                           
@@ -813,96 +813,96 @@ class DBDArchive::MenuArt
   
   def self.kill_attr_menu(killer)
     puts ""
-    puts "Name: #{killer.name}"
-    puts "Alias: #{killer.nickname}"
-    puts "Gender: #{killer.gender}"
-    puts "Nationality: #{killer.nationality}"
-    puts "Power: #{killer.power}"
-    puts "Weapon: #{killer.weapon}"
-    puts "Perks: #{killer.perks[0][:name]}, #{killer.perks[1][:name]}, #{killer.perks[2][:name]}"
-    puts "==================================================================="
+    puts "Name: #{killer.name}".magenta
+    puts "Alias: #{killer.nickname}".magenta
+    puts "Gender: #{killer.gender}".magenta
+    puts "Nationality: #{killer.nationality}".magenta
+    puts "Power: #{killer.power}".magenta
+    puts "Weapon: #{killer.weapon}".magenta
+    puts "Perks: #{killer.perks[0][:name]}, #{killer.perks[1][:name]}, #{killer.perks[2][:name]}".magenta
+    puts "===================================================================".magenta
     puts ""
-    puts "Would you like to know more about #{killer.kill_name}?"
-    puts "1. Lore"
-    puts "2. Perks"
-    puts "==================================================================="
+    puts "Would you like to know more about #{killer.kill_name}?".magenta
+    puts "1. Lore".magenta
+    puts "2. Perks".magenta
+    puts "===================================================================".magenta
   end
   
   def self.surv_attr_menu(surv)
     puts ""
-    puts "Name: #{surv.name}"
-    puts "Gender: #{surv.gender}"
-    puts "Nationality: #{surv.nationality}"
-    puts "Role: #{surv.role}"
-    puts "Perks: #{surv.perks[0][:name]}, #{surv.perks[1][:name]}, #{surv.perks[2][:name]}"
-    puts "======================================================================= "
+    puts "Name: #{surv.name}".magenta
+    puts "Gender: #{surv.gender}".magenta
+    puts "Nationality: #{surv.nationality}".magenta
+    puts "Role: #{surv.role}".magenta
+    puts "Perks: #{surv.perks[0][:name]}, #{surv.perks[1][:name]}, #{surv.perks[2][:name]}".magenta
+    puts "======================================================================= ".magenta
     puts ""
-    puts "Would you like to know more about #{surv.name}"
-    puts "1. Lore"
-    puts "2. Perks"
-    puts "======================================================================= "
+    puts "Would you like to know more about #{surv.name}".magenta
+    puts "1. Lore".magenta
+    puts "2. Perks".magenta
+    puts "======================================================================= ".magenta
   end
   
   def self.perk_list(char)
-    puts "========================================"
+    puts "========================================".magenta
     
     if char.is_a?(DBDArchive::Killer)
-      print "#{char.kill_name}" 
+      print "#{char.kill_name}".magenta
     else
-      print "#{char.name}"
+      print "#{char.name}".magenta
     end
     
-    puts " has three unique perks:"
+    puts " has three unique perks:".magenta
     puts ""
-    char.perks.each.with_index(1) {|perk, i| puts "#{i}. #{perk[:name]}"}
+    char.perks.each.with_index(1) {|perk, i| puts "#{i}. #{perk[:name]}".magenta}
     puts ""
-    puts "========================================"
+    puts "========================================".magenta
   end
   
   def self.perk_description(char, index)
-    puts "========================================"
+    puts "========================================".magenta
     puts ""
-    puts "#{char.perks[index][:name]}: "
+    puts "#{char.perks[index][:name]}: ".magenta
     puts ""
-    puts "#{char.perks[index][:description]}"
+    puts "#{char.perks[index][:description]}".magenta
     puts ""
-    puts "========================================"
-    puts "Press enter to return to perk list..."
+    puts "========================================".magenta
+    puts "Press enter to return to perk list...".magenta
     gets
   end
   
   def self.item_description(item)
-    puts "========================================"
+    puts "========================================".magenta
     puts ""
-    puts "#{item[:name]}: "
+    puts "#{item[:name]}: ".magenta
     puts ""
-    puts "#{item[:description]}"
+    puts "#{item[:description]}".magenta
     puts ""
-    puts "========================================"
-    puts "Press enter to return to items list..."
+    puts "========================================".magenta
+    puts "Press enter to return to items list...".magenta
     gets
   end
   
   def self.realm_menu(realm)
-    puts "======================================================"
+    puts "======================================================".magenta
     puts ""
-    puts "#{realm.name}:"
+    puts "#{realm.name}:".magenta
     puts ""
-    puts "Maps: #{realm.maps.join(", ")}"
-    puts "======================================================"
+    puts "Maps: #{realm.maps.join(", ")}".magenta
+    puts "======================================================".magenta
     puts ""
   end
   
   def self.greeting_splash
-    puts <<~GREETING
+    puts <<~GREETING.blue
     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     ================================================================================
       ______               _   _            ______            _ _       _     _   
-      |  _  \             | | | |           |  _  \          | (_)     | |   | |  
+      |  _  \\             | | | |           |  _  \\          | (_)     | |   | |  
       | | | |___  __ _  __| | | |__  _   _  | | | |__ _ _   _| |_  __ _| |__ | |_ 
-      | | | / _ \/ _  |/ _  | |  _ \| | | | | | | / _  | | | | | |/ _  |  _ \| __|
+      | | | / _ \\/ _  |/ _  | |  _ \\| | | | | | | / _  | | | | | |/ _  |  _ \\| __|
       | |/ /  __/ (_| | (_| | | |_) | |_| | | |/ / (_| | |_| | | | (_| | | | | |_ 
-      |___/ \___|\__ _|\__ _| |_ __/ \__  | |___/ \__ _|\__  |_|_|\__  |_| |_|\__|
+      |___/ \\___|\\__ _|\\__ _| |_ __/ \\__  | |___/ \\__ _|\\__  |_|_|\\__  |_| |_|\\__|
                                       __/ |              __/ |     __/ |          
                                      |___/              |___/     |___/           
     
@@ -915,18 +915,23 @@ class DBDArchive::MenuArt
     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     GREETING
     puts ""
-    puts "Welcome to the Dead by Daylight Archive!"
+    puts "Welcome to the Dead by Daylight Archive!".magenta
     puts ""
-    puts "Make a selection using the number of the item you wish to select - "
-    puts "or type help for a list of commands."
-    puts "Press enter to open the archive..."
+    puts "Make a selection using the number of the item you wish to select - ".magenta
+    puts "or type help for a list of commands.".magenta
+    puts "Press enter to open the archive...".magenta
     gets
   end
   
   def self.exit_splash
-    puts "You have escaped The Entity's realm this time..."
-    puts "Thank you for visiting The Archive"
-    puts "exiting..."
+    puts "+++++++++++++++++++++++++++++++++++++++++++++++++++".blue
+    puts "===================================================".blue
+    puts ""
+    puts "You have escaped The Entity's realm this time...".magenta
+    puts "Thank you for visiting The Archive".magenta
+    puts "exiting...".magenta
+    puts "===================================================".blue
+    puts "+++++++++++++++++++++++++++++++++++++++++++++++++++".blue
   end
   
    def self.help_menu
@@ -957,7 +962,7 @@ class DBDArchive::MenuArt
   end
   
   def self.about_menu
-    puts <<~ABOUT
+    puts <<~ABOUT.blue
     
     ======================================================================
     ======================================================================
